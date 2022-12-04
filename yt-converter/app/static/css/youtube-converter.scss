@@ -1,0 +1,136 @@
+html *{
+    font-family: "Arial","Hiragino Sans",YuGothic,"Yu Gothic","メイリオ",Meiryo;
+    background-color:#ffffff;
+}
+
+body{
+  margin: 0.3px 300px;
+}
+
+
+h1{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+a{
+    margin: 0.2em 1em;
+    padding: 0.2em;
+    color: #4594b1;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 80em;
+    font-size: 16px
+    
+}
+a:hover{
+    color: whitesmoke;
+    background-color: #ff9999;
+}
+
+textarea{
+    margin: 0.1em 1em;
+    padding: 0.8em;
+    outline: none;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    width: 600px;
+    height: 100px;
+    border: 1px solid gray;
+}
+textarea:focus{
+    box-shadow: 0 0 7px #3498db;
+    border: 1px solid #3498db;
+}
+
+.submit_button{
+    margin: 0.1em 1em;
+    display       : inline-block;
+    border-radius : 6%;          /* 角丸       */
+    font-size     : 12pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 11px 11px;   /* 余白       */
+    background    : #ff4d4d;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 8px 8px 6px #666666;  /* 影の設定 */
+    border        : 2px solid #ff4d4d;    /* 枠の指定 */
+}
+.submit_button:hover{
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #ff4d4d;
+    background    : #ffffff;
+}
+
+
+button {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 0;
+    box-shadow: none;
+    color: #ffffff;
+    font-size: 1.14rem;
+    background-color: #00c2bc;
+    cursor: pointer;
+}
+
+
+/* ローディング画面 */
+@keyframes sk-cubemove {
+  25% { 
+      transform: translateX(42px) rotate(-90deg) scale(0.5);
+  } 50% { 
+      transform: translateX(42px) translateY(42px) rotate(-179deg);
+  } 50.1% { 
+      transform: translateX(42px) translateY(42px) rotate(-180deg);
+  } 75% { 
+      transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  } 100% { 
+      transform: rotate(-360deg);
+  }
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    
+    &__spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0);
+        transform: translate(-50%, -50%);
+
+
+        &--cube1,
+        &--cube2 {
+            background-color: #ffffff;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: sk-cubemove 2s infinite ease-in-out;
+        }
+
+        &--cube2 {
+            animation-delay: -1s;
+        }
+    }
+}

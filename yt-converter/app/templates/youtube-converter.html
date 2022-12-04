@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/youtube-converter.css' %}">
+</head>
+<body>
+    <h1>YouTube Converter</h1>
+
+    <div>
+        <h3>YouTube動画のURLを入力</h3>
+        <form name="url" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{ field }}
+            </p>
+            {% endfor %}
+            <input type="submit" value="mp3へ変換" class="submit_button" />
+            <!-- 以下がアニメーション部分 -->
+            <div class="loader">
+                <div class="loader__spinner">
+                    <div class="loader__spinner--cube1"></div>
+                    <div class="loader__spinner--cube2"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div>
+        <h3>{{ message }}</h3>
+        {% for file_name in file_names %}
+        <div>
+            <a href="{% url 'download' file_name %}">{{ file_name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for error in form.non_field_errors %}
+        {{ error }}
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/youtube-converter.js' %}"></script>
+</body>

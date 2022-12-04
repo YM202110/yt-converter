@@ -1,0 +1,12 @@
+version: '3.10'
+services:
+  yt-converter:
+    container_name: youtube_converter
+    build: .
+    working_dir: '/root/yt-converter'
+    tty: true
+    volumes:
+      - ./yt-converter:/root/yt-converter
+    ports:
+      - "8000:8000"
+    image: yt_converter
