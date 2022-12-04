@@ -27,10 +27,7 @@ def file_download(request, file_name):
 
 def file_remove():
     files = glob.glob(f'{MEDIA_ROOT}/*.mp3')
-    print(f'>>>remove MEDIA_ROOT {MEDIA_ROOT}')
-    print(f'>>>remove files {files}')
     if not files:
         return
-    if DEBUG:
-        for file in files:
-            os.remove(file)
+    for file in files:
+        os.remove(file)

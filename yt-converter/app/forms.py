@@ -12,7 +12,6 @@ class EnterURL(forms.Form):
     def clean(self):
         data = super().clean()
         file_remove()
-        print(f'>>>data  {data}')
 
         if not data['urls']:
             raise ValidationError("URLを入力してください")
