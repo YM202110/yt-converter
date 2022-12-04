@@ -15,4 +15,5 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
 RUN python -m pip install django
+RUN python -m pip install django-environ
 RUN python -m pip install yt-dlp
