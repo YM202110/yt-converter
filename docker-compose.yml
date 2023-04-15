@@ -21,6 +21,7 @@ services:
       dockerfile: Dockerfile.dev.nginx
     ports:
       - "80:80"
+      - "443:443"
     image: yt-converter-nginx
     depends_on:
       - yt-converter_dev
@@ -49,9 +50,10 @@ services:
       dockerfile: Dockerfile.prod.nginx
     ports:
       - "80:80"
+      - "443:443"
     image: yt-converter-nginx
     depends_on:
       - yt-converter_prod
     volumes:
       - /var/www/yt-converter/staticfiles:/var/www/yt-converter/staticfiles
-      - ./nginx.dev.conf:/etc/nginx/nginx.dev.conf
+      - ./nginx.prod.conf:/etc/nginx/nginx.prod.conf
