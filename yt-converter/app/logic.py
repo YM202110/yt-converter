@@ -1,4 +1,5 @@
-import os, glob
+import os
+import glob
 from yt_dlp import YoutubeDL
 from config.settings import MEDIA_ROOT, DEBUG
 from django.http import FileResponse
@@ -7,7 +8,7 @@ from django.http import FileResponse
 def mp3_converter(urls):
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': MEDIA_ROOT + '/%(title)s.%(ext)s',
+        'outtmpl': MEDIA_ROOT + '%(title)s.%(ext)s',
         'postprocessors': [
             {'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '192'},
             {'key': 'FFmpegMetadata'},
@@ -21,7 +22,7 @@ def mp3_converter(urls):
 
 
 def file_download(request, file_name):
-    file_path = f'media_root/{file_name}'
+    file_path = f'media/{file_name}'
     return FileResponse(open(file_path, "rb"), as_attachment=True)
 
 
