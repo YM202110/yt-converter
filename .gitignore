@@ -1,1 +1,5 @@
 .env
+.idea
+ssl/cert.pem
+ssl/key.pem
+ssl/key_nopass.pem

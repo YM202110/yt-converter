@@ -1,0 +1,12 @@
+{
+  "name": "yt-converter",
+  "version": "1.0.0",
+  "description": "generate mp3 file",
+  "scripts": {
+    "build-css": "node-sass yt-converter/app/static/css/youtube-converter.scss yt-converter/staticfiles/css/your_output_css_file.css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
