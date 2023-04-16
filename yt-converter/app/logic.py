@@ -22,7 +22,7 @@ def mp3_converter(urls):
 
 
 def file_download(request, file_name):
-    file_path = f'media/{file_name}'
+    file_path = f'{MEDIA_ROOT}{file_name}'
     return FileResponse(open(file_path, "rb"), as_attachment=True)
 
 

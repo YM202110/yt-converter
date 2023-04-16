@@ -25,7 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost',
+    '52.192.143.246',  # IPアドレスを許可
+    # 'yourdomain.com',  # ドメイン名を許可
+]
+# ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
@@ -150,8 +155,16 @@ if not DEBUG:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     # Media files settings
-    MEDIA_LOCATION = 'yt-converter/media'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
-    # MEDIA_ROOTはS3使用時は不要だが、このアプリでは保存先のパス指定で使っているため定義しておく
-    MEDIA_ROOT = MEDIA_URL
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+    # MEDIA_LOCATION = 'yt-converter/media'
+    # MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+    # # MEDIA_ROOTはS3使用時は不要だが、このアプリでは保存先のパス指定で使っているため定義しておく
+    # MEDIA_ROOT = MEDIA_URL
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# CSRF検証のため信頼できるオリジンを指定（本番環境ではドメイン名を指定する）
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost',
+    'https://52.192.143.246',
+]

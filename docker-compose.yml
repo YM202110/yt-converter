@@ -38,7 +38,6 @@ services:
     tty: true
     volumes:
       - ./yt-converter:/root/yt-converter
-      - /var/www/yt-converter/staticfiles:/var/www/yt-converter/staticfiles
     image: yt-converter
     env_file:
       - .env
@@ -55,5 +54,4 @@ services:
     depends_on:
       - yt-converter_prod
     volumes:
-      - /var/www/yt-converter/staticfiles:/var/www/yt-converter/staticfiles
       - ./nginx.prod.conf:/etc/nginx/nginx.prod.conf
